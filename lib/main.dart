@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.orange,
           primaryColorDark: Colors.black87,
           scaffoldBackgroundColor: Colors.black54,
-          appBarTheme: const AppBarTheme(color: Colors.black54),
+          appBarTheme: const AppBarTheme(color: Colors.black54)
+              .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
           dividerColor: Colors.white30,
           listTileTheme: const ListTileThemeData(iconColor: Colors.white60),
           textTheme: const TextTheme(
@@ -30,7 +31,12 @@ class MyApp extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.w400)),
           useMaterial3: false),
-      home: const MyHomePage(),
+      routes: {
+        '/myHome': (context) => const MyHomePage(),
+        '/coin': (context) => const CoinScreen()
+      },
+      initialRoute: '/myHome',
+      //   home: const MyHomePage(),
     );
   }
 }
@@ -73,7 +79,27 @@ class _MyHomePage extends State<MyHomePage> {
                   "2000\$",
                   style: theme.textTheme.labelSmall,
                 ),
+                onTap: () {
+                  Navigator.of(context).pushNamed('/coin');
+                },
               )),
+    );
+  }
+}
+
+class CoinScreen extends StatelessWidget {
+  const CoinScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Bitcoin",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+      ),
+      body: Center(child: Text('Hello')),
     );
   }
 }
