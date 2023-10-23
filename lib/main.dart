@@ -50,7 +50,7 @@ class _MyHomePage extends State<MyHomePage> {
       appBar: AppBar(
           title: Center(
               child:
-                  Text("Cripto Bitcoint", style: theme.textTheme.bodyMedium))),
+                  Text("Cripto Bitcoin", style: theme.textTheme.bodyMedium))),
       body: ListView.separated(
           itemCount: 20,
           separatorBuilder: (context, i) => const Divider(),
@@ -64,7 +64,7 @@ class _MyHomePage extends State<MyHomePage> {
                   Icons.arrow_forward_ios,
                 ),
                 title: Text(
-                  "Bitcion",
+                  "Bitcoin",
                   style: theme.textTheme.bodyMedium?.copyWith(
                     fontSize: 20,
                   ),
