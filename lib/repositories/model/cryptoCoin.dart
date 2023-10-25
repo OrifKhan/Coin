@@ -1,6 +1,10 @@
 class CryptoCoin {
+  CryptoCoin({
+    required this.name,
+    required this.priceInUSD,
+    required this.imagmeUrl,
+  });
   final String name;
   final double priceInUSD;
-
-  CryptoCoin(this.name, this.priceInUSD);
+  final String imagmeUrl;
 }

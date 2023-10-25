@@ -13,6 +13,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageScreen extends State<MyHomePage> {
   List<CryptoCoin>? _cryptoListCoin;
   @override
+  void initState() {
+    _loadCryptoCoin();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
@@ -22,7 +28,9 @@ class _MyHomePageScreen extends State<MyHomePage> {
               child:
                   Text("Cripto Bitcoin", style: theme.textTheme.bodyMedium))),
       body: (_cryptoListCoin == null)
-          ? const SizedBox()
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
           : ListView.separated(
               itemCount: _cryptoListCoin!.length,
               separatorBuilder: (context, i) => const Divider(),
@@ -33,14 +41,11 @@ class _MyHomePageScreen extends State<MyHomePage> {
                 );
               },
             ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.download,
-        ),
-        onPressed: () async {
-          _cryptoListCoin = await CrytoCoinRepository().getCointList();
-        },
-      ),
     );
+  }
+
+  Future<void> _loadCryptoCoin() async {
+    _cryptoListCoin = await CrytoCoinRepository().getCointList();
+    setState(() {});
   }
 }
