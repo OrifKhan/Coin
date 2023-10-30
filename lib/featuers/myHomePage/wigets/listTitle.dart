@@ -1,5 +1,6 @@
-import 'package:cripto_coin/repositories/model/cryptoCoin.dart';
 import 'package:flutter/material.dart';
+
+import '../../../repositories/crytioCoint/coint.dart';
 
 class ListTitle extends StatelessWidget {
   const ListTitle({
